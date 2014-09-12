@@ -31,10 +31,9 @@ namespace PhotoStrokes
     {
         private float m_strokeLength = 10.0f;
         private float m_strokeWidth = 2.0f;
-        private int m_numStrokes = 200000;
+        private int m_numStrokes = 2000;
 
         private bool m_isResourceLoadingDone;
-
         private CanvasBitmap m_sourceBitmap;
         private byte[] m_pixelArray;
         private uint m_pixelArrayWidth;
@@ -47,27 +46,13 @@ namespace PhotoStrokes
 #if WINDOWS_PHONE_APP
             this.NavigationCacheMode = NavigationCacheMode.Required;
 #endif
-            mainCanvas.CreateResources += mainCanvas_CreateResources;
-            mainCanvas.Draw += mainCanvas_Draw;
         }
 
         async void mainCanvas_CreateResources(Microsoft.Graphics.Canvas.CanvasControl sender, object args)
         {
             m_isResourceLoadingDone = false;
 
-            //var picker = new FileOpenPicker();
-            //picker.FileTypeFilter.Add(".jpg");
-            //picker.FileTypeFilter.Add(".png");
-            
-            //var sourceFile = await picker.PickSingleFileAsync();
-            //if (sourceFile == null)
-            //{
-            //    return;
-            //}
-
-            //// WIN2D: resource loading from WinRT types including StorageFile and IRAS
-            //m_sourceBitmap = await CanvasBitmap.LoadAsync(sender, sourceFile.Path);
-            // Opening from StorageFile doesn't work yet
+            // WIN2D: resource loading from WinRT types including StorageFile and IRAS
             m_sourceBitmap = await CanvasBitmap.LoadAsync(sender, "Chrysanthemum.jpg");
             var sourceFile = await Package.Current.InstalledLocation.GetFileAsync("Chrysanthemum.jpg");
 
@@ -89,6 +74,7 @@ namespace PhotoStrokes
             m_pixelArray = pixelProvider.DetachPixelData();
 
             m_isResourceLoadingDone = true;
+
             mainCanvas.Invalidate();
         }
 
@@ -124,6 +110,9 @@ namespace PhotoStrokes
                     args.DrawingSession.DrawLine(x1, y1, x2, y2, color, m_strokeWidth);
                 }
             }
+
+            // Render looping.
+            mainCanvas.Invalidate();
         }
 
         /// <summary>
