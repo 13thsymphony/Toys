@@ -68,8 +68,8 @@ namespace PhotoStrokes
             //// WIN2D: resource loading from WinRT types including StorageFile and IRAS
             //m_sourceBitmap = await CanvasBitmap.LoadAsync(sender, sourceFile.Path);
             // Opening from StorageFile doesn't work yet
-            m_sourceBitmap = await CanvasBitmap.LoadAsync(sender, "Test-r255,g200,b150.png");
-            var sourceFile = await Package.Current.InstalledLocation.GetFileAsync("Test-r255,g200,b150.png");
+            m_sourceBitmap = await CanvasBitmap.LoadAsync(sender, "Chrysanthemum.jpg");
+            var sourceFile = await Package.Current.InstalledLocation.GetFileAsync("Chrysanthemum.jpg");
 
             // Win2D: because we can't lock/read pixels we rely on BitmapDecoder
             var stream = await sourceFile.OpenReadAsync();
@@ -137,7 +137,7 @@ namespace PhotoStrokes
         {
             uint x = (uint)(xFactor * m_pixelArrayWidth);
             uint y = (uint)(yFactor * m_pixelArrayHeight);
-            uint offset = y * m_pixelArrayWidth + x;
+            uint offset = (y * m_pixelArrayWidth + x) * 4;
 
             // We get pixel data in BGRA channel order.
             return Color.FromArgb(m_pixelArray[offset + 3], m_pixelArray[offset + 2], m_pixelArray[offset + 1], m_pixelArray[offset]);
