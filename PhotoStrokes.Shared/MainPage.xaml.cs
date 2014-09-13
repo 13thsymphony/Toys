@@ -31,13 +31,14 @@ namespace PhotoStrokes
     {
         private float m_strokeLength = 10.0f;
         private float m_strokeWidth = 2.0f;
-        private int m_numStrokes = 2000;
+        private int m_numStrokes = 100;
 
         private bool m_isResourceLoadingDone;
         private CanvasBitmap m_sourceBitmap;
         private byte[] m_pixelArray;
         private uint m_pixelArrayWidth;
         private uint m_pixelArrayHeight;
+        private Random m_rnd;
 
         public MainPage()
         {
@@ -46,6 +47,9 @@ namespace PhotoStrokes
 #if WINDOWS_PHONE_APP
             this.NavigationCacheMode = NavigationCacheMode.Required;
 #endif
+
+            mainCanvas.CreateResources += mainCanvas_CreateResources;
+            mainCanvas.Draw += mainCanvas_Draw;
         }
 
         async void mainCanvas_CreateResources(Microsoft.Graphics.Canvas.CanvasControl sender, object args)
@@ -73,6 +77,8 @@ namespace PhotoStrokes
 
             m_pixelArray = pixelProvider.DetachPixelData();
 
+            m_rnd = new Random();
+
             m_isResourceLoadingDone = true;
 
             mainCanvas.Invalidate();
@@ -84,8 +90,6 @@ namespace PhotoStrokes
             {
                 //args.DrawingSession.DrawImage(m_sourceBitmap);
 
-                var rnd = new Random();
-
                 // Draw a bunch of solid color strokes.
                 // - Centered at a random point
                 // - Color is determined by the bitmap value at that point
@@ -93,11 +97,11 @@ namespace PhotoStrokes
                 // - Random angle
                 for (int i = 0; i < m_numStrokes; i++)
                 {
-                    double centerXFactor = rnd.NextDouble();
-                    double centerYFactor = rnd.NextDouble();
+                    double centerXFactor = m_rnd.NextDouble();
+                    double centerYFactor = m_rnd.NextDouble();
                     float centerX = (float)(centerXFactor * m_sourceBitmap.Size.Width);
                     float centerY = (float)(centerYFactor * m_sourceBitmap.Size.Height);
-                    float angle = (float)(rnd.NextDouble() * 2 * Math.PI);
+                    float angle = (float)(m_rnd.NextDouble() * 2 * Math.PI);
                     Color color = getColorFromBitmapCoordinates(centerXFactor, centerYFactor);
 
                     // Convert the stroke definition to bounding box for line.
@@ -112,7 +116,7 @@ namespace PhotoStrokes
             }
 
             // Render looping.
-            mainCanvas.Invalidate();
+            //mainCanvas.Invalidate();
         }
 
         /// <summary>
@@ -130,6 +134,11 @@ namespace PhotoStrokes
 
             // We get pixel data in BGRA channel order.
             return Color.FromArgb(m_pixelArray[offset + 3], m_pixelArray[offset + 2], m_pixelArray[offset + 1], m_pixelArray[offset]);
+        }
+
+        private void renderOneButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainCanvas.Invalidate();
         }
     }
 }

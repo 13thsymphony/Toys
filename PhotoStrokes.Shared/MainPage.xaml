@@ -10,6 +10,11 @@
     >
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <canvas:CanvasControl x:Name="mainCanvas" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button x:Name="renderOneButton" Grid.Row="0" Click="renderOneButton_Click">Render one frame</Button>
+        <canvas:CanvasControl Grid.Row="1" x:Name="mainCanvas" />
     </Grid>
 </Page>
