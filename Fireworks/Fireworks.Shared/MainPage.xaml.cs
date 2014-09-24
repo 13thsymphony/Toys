@@ -28,17 +28,20 @@ namespace Fireworks
     {
         private Point m_pointerPos;
         private CanvasRenderTarget[] m_targets; // TODO: We can't copy from a DrawingSession so we need two targets.
-        private CanvasRenderTarget m_fadeToBlack; // This is a semitransparent black surface, blend this with a bitmap to darken it.
+        private CanvasRenderTarget m_subtractorBitmap; // This is a semitransparent black surface, blend this with a bitmap to darken it.
         private Random m_rnd;
 
-        private bool m_drawNewFirework;
+        private bool m_wasPointerPressed;
         private bool m_areResourcesReady;
         private int m_targetIndex;
 
-        private const byte FADE_ALPHA = 0; // Controls how quickly the screenbuffer fades to black (0 to 255, lower is slower).
-        private const float FIREWORK_RADIUS = 5.0f;
-        private const float FIREWORK_OFFSET_DIPS = 20.0f; // "Radius" of how many DIPs the firework can be offset.
-        private const float BLUR_STDDEV = 2.0f;
+        private const int NUM_FIREWORKS_PER_FRAME = 3;
+        private const byte FADE_SUBTRACTOR = 100; // Subtract this value from RGB each frame.
+        private const float FIREWORK_RADIUS_MAX = 5.0f;
+        private const float FIREWORK_RADIUS_MIN = 1.0f;
+        private const float FIREWORK_OFFSET_DIPS = 30.0f; // "Radius" of how many DIPs the firework can be offset.
+        private const float BLUR_STDDEV = 1f; // Blur standard deviation in DIPs per frame.
+        private const float FIREWORK_TRANSLATION = 0.5f; // How many DIPs the fireworks drop each frame.
 
         private Size m_currentSize;
 
@@ -55,7 +58,27 @@ namespace Fireworks
             MainCanvas.CreateResources += MainCanvas_CreateResources;
             MainCanvas.Draw += MainCanvas_Draw;
             MainCanvas.PointerMoved += MainCanvas_PointerMoved;
+            MainCanvas.PointerPressed += MainCanvas_PointerPressed;
+            MainCanvas.PointerReleased += MainCanvas_PointerReleased;
             MainCanvas.SizeChanged += MainCanvas_SizeChanged;
+        }
+
+        void MainCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            m_pointerPos = e.GetCurrentPoint((UIElement)sender).Position;
+        }
+
+        void MainCanvas_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            m_wasPointerPressed = false;
+        }
+
+        void MainCanvas_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            // We need to get the pointer position here as well in case the user
+            // tapped without having ever moved the pointer (e.g. mouse click without mouse move).
+            m_pointerPos = e.GetCurrentPoint((UIElement)sender).Position;
+            m_wasPointerPressed = true;
         }
 
         void MainCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -71,21 +94,25 @@ namespace Fireworks
                 new CanvasRenderTarget(MainCanvas, NewSize)
             };
 
-            m_fadeToBlack = new CanvasRenderTarget(MainCanvas, NewSize);
-            using (var ds = m_fadeToBlack.CreateDrawingSession())
+            // TODO: not sure why I must specifically clear these at the beginning.
+            using (var ds = m_targets[0].CreateDrawingSession())
             {
-                ds.Clear(Windows.UI.Color.FromArgb(FADE_ALPHA, 0, 0, 0));
+                ds.Clear(Windows.UI.Colors.Black);
+            }
+
+            using (var ds = m_targets[1].CreateDrawingSession())
+            {
+                ds.Clear(Windows.UI.Colors.Black);
+            }
+
+            m_subtractorBitmap = new CanvasRenderTarget(MainCanvas, NewSize);
+            using (var ds = m_subtractorBitmap.CreateDrawingSession())
+            {
+                ds.Clear(Windows.UI.Color.FromArgb(255, FADE_SUBTRACTOR, FADE_SUBTRACTOR, FADE_SUBTRACTOR));
             }
 
             m_currentSize = NewSize;
             m_areResourcesReady = true;
-        }
-
-        void MainCanvas_PointerMoved(object sender, PointerRoutedEventArgs e)
-        {
-            m_pointerPos = e.GetCurrentPoint((UIElement)sender).Position;
-
-            m_drawNewFirework = e.GetCurrentPoint((UIElement)sender).IsInContact;
         }
 
         byte GetClampedRandomByte(byte min, byte max)
@@ -106,29 +133,36 @@ namespace Fireworks
             {
                 // Emulate a fade-to-black effect by blurring the previous render target
                 // and blending with semitransparent black.
-                var blend = new BlendEffect();
                 var blur = new GaussianBlurEffect();
-                blend.Background = m_fadeToBlack;
-                blend.Foreground = m_targets[1 - m_targetIndex];
-                blur.Source = blend;
-                blur.StandardDeviation = BLUR_STDDEV;
-                rtds.DrawImage(blur);
+                blur.Source = m_targets[1 - m_targetIndex];
+                blur.StandardDeviation = BLUR_STDDEV; 
 
-                if (m_drawNewFirework == true)
+                //var blend = new BlendEffect();
+                //blend.Foreground = m_subtractorBitmap;
+                //blend.Background = blur;
+                //blend.Mode = BlendEffectMode.Subtract;
+
+                // The fireworks drop a bit each frame.
+                rtds.DrawImage(blur, new System.Numerics.Vector2(0, FIREWORK_TRANSLATION));
+
+                if (m_wasPointerPressed == true)
                 {
-                    var brush = new CanvasSolidColorBrush(sender, Windows.UI.Color.FromArgb(
-                        255,
-                        GetClampedRandomByte(0, 255),
-                        GetClampedRandomByte(0, 255),
-                        GetClampedRandomByte(0, 255)
-                        ));
+                    for (int i = 0; i < NUM_FIREWORKS_PER_FRAME; i++)
+                    {
+                        var brush = new CanvasSolidColorBrush(sender, Windows.UI.Color.FromArgb(
+                            255,
+                            GetClampedRandomByte(0, 255),
+                            GetClampedRandomByte(0, 255),
+                            GetClampedRandomByte(0, 255)
+                            ));
 
-                    rtds.FillCircle(
-                        (float)m_pointerPos.X + GetClampedRandomFloat(-FIREWORK_OFFSET_DIPS, FIREWORK_OFFSET_DIPS),
-                        (float)m_pointerPos.Y + GetClampedRandomFloat(-FIREWORK_OFFSET_DIPS, FIREWORK_OFFSET_DIPS),
-                        GetClampedRandomFloat(0.0f, FIREWORK_RADIUS),
-                        brush
-                        );
+                        rtds.FillCircle(
+                            (float)m_pointerPos.X + GetClampedRandomFloat(-FIREWORK_OFFSET_DIPS, FIREWORK_OFFSET_DIPS),
+                            (float)m_pointerPos.Y + GetClampedRandomFloat(-FIREWORK_OFFSET_DIPS, FIREWORK_OFFSET_DIPS),
+                            GetClampedRandomFloat(FIREWORK_RADIUS_MIN, FIREWORK_RADIUS_MAX),
+                            brush
+                            );
+                    }
                 }
             }
 
