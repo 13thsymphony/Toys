@@ -10,15 +10,15 @@ namespace Fireworks
     static partial class Constants
     {
         // Age at which the firework will stop being simulated in seconds.
-        public const float FireworkMaxAge = 3.0f;
+        public const float MaxAge = 3.0f;
         // What fraction of velocity should remain each second.
+        public const float DragCoeff = 0.01f;
+        // How much is added to DY each second (applied after drag).
+        public const float GravityTerm = 20.0f;
+        // What fraction of each RGB channel should remain each second.
         // The equation for calculating remaining amount based on dt:
         // e^(ln[coefficient] * dt) * [current amount]
-        public const float FireworkDragCoeff = 0.3f;
-        // How much is added to DY each second (applied before drag).
-        public const float FireworkGravityTerm = 0.0f;
-        // What fraction of each RGB channel should remain each second.
-        public const float FireworkBrightnessCoeff = 0.9f;
+        public const float BrightnessCoeff = 0.2f;
     }
 
     /// <summary>
@@ -84,19 +84,19 @@ namespace Fireworks
             m_x += m_dx * timeDelta;
             m_y += m_dy * timeDelta;
 
-            m_dx *= (float)Math.Exp(Math.Log(Constants.FireworkDragCoeff) * timeDelta);
-            // Gravity acts before drag. This ensures that gravity's contribution is always bounded.
-            m_dy += Constants.FireworkGravityTerm;
-            m_dy *= (float)Math.Exp(Math.Log(Constants.FireworkDragCoeff) * timeDelta);
+            m_dx *= (float)Math.Exp(Math.Log(Constants.DragCoeff) * timeDelta);
+            m_dy *= (float)Math.Exp(Math.Log(Constants.DragCoeff) * timeDelta);
+            // Gravity acts after drag.
+            m_dy += Constants.GravityTerm;
 
             m_age += timeDelta;
 
             // TODO: I think I can't use the *= operator because it would force conversion to byte before the multiplication.
             // TODO: Premultiplied colors??!?!?!??!?!?
-            //m_color.A = (byte)(m_color.A * Math.Exp(Math.Log(Constants.FireworkDragCoeff) * timeDelta));
-            m_color.R = (byte)(m_color.R * Math.Exp(Math.Log(Constants.FireworkDragCoeff) * timeDelta));
-            m_color.G = (byte)(m_color.G * Math.Exp(Math.Log(Constants.FireworkDragCoeff) * timeDelta));
-            m_color.B = (byte)(m_color.B * Math.Exp(Math.Log(Constants.FireworkDragCoeff) * timeDelta));
+            //m_color.A = (byte)(m_color.A * Math.Exp(Math.Log(Constants.BrightnessCoeff) * timeDelta));
+            m_color.R = (byte)(m_color.R * Math.Exp(Math.Log(Constants.BrightnessCoeff) * timeDelta));
+            m_color.G = (byte)(m_color.G * Math.Exp(Math.Log(Constants.BrightnessCoeff) * timeDelta));
+            m_color.B = (byte)(m_color.B * Math.Exp(Math.Log(Constants.BrightnessCoeff) * timeDelta));
         }
 
         public void Render(CanvasDrawingSession ds)
@@ -110,7 +110,7 @@ namespace Fireworks
         /// <returns></returns>
         public bool ShouldDispose()
         {
-            if (m_age > Constants.FireworkMaxAge)
+            if (m_age > Constants.MaxAge)
             {
                 return true;
             }

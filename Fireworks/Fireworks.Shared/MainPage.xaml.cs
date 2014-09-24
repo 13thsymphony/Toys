@@ -25,15 +25,15 @@ namespace Fireworks
 {
     static partial class Constants
     {
-        public const int NumFwPerFrame = 1;
-        public const float FwRadiusMax = 5.0f;
-        public const float FwRadiusMin = 1.0f;
+        public const int NumPerFrame = 6;
+        public const float RadiusMax = 2.0f;
+        public const float RadiusMin = 2.0f;
         // Randomization factor - how many DIPs can we deviate from pointer position when creating the firework.
-        public const float FwPosRndMax = 33.0f;
+        public const float PosRndMax = 0.0f;
         // Randomization factor - how many DIPs/sec can we deviate from pointer velocity when creating the firework.
-        public const float FwVelRndMax = 0.0f;
-        // TODO: Horrible hack for guessing velocity (DIPs/second).
-        public const float FwVelMultiplier = 100.0f;
+        public const float VelRndMax = 600.0f;
+        // Multiply this by the pointer velocity to get base firework velocity.
+        public const float PointerVelCoeff = 0.5f;
     }
 
     /// <summary>
@@ -99,12 +99,12 @@ namespace Fireworks
             m_currentSize = NewSize;
         }
 
-        byte GetClampedRandomByte(byte min, byte max)
+        byte RndByte(byte min, byte max)
         {
             return (byte)(m_rnd.Next(min, max));
         }
 
-        float GetClampedRandomFloat(float min, float max)
+        float RndFloat(float min, float max)
         {
             return (float)m_rnd.NextDouble() * (max - min) + min;
         }
@@ -115,25 +115,25 @@ namespace Fireworks
             ds.Clear(Colors.Black);
 
             float dt = m_stopwatch.ElapsedMilliseconds / 1000.0f;
-            m_stopwatch.Reset();
+            m_stopwatch.Restart();
 
             // We are abusing the Draw call as our "game loop" = create new fireworks here
             // independent of the timing of input events.
             if (m_wasPointerPressed == true)
             {
-                for (int i = 0; i < Constants.NumFwPerFrame; i++)
+                for (int i = 0; i < Constants.NumPerFrame; i++)
                 {
                     var firework = new Firework(
-                        (float)m_pointerPos.X + GetClampedRandomFloat(-Constants.FwPosRndMax, Constants.FwPosRndMax),
-                        (float)m_pointerPos.Y + GetClampedRandomFloat(-Constants.FwPosRndMax, Constants.FwPosRndMax),
-                        (float)(m_pointerPos.X - m_pointerPrevPos.X) / dt + GetClampedRandomFloat(-Constants.FwVelRndMax, Constants.FwVelRndMax),
-                        (float)(m_pointerPos.X - m_pointerPrevPos.X) / dt + GetClampedRandomFloat(-Constants.FwVelRndMax, Constants.FwVelRndMax),
-                        GetClampedRandomFloat(Constants.FwRadiusMin, Constants.FwRadiusMax),
+                        (float)m_pointerPos.X + RndFloat(-Constants.PosRndMax, Constants.PosRndMax),
+                        (float)m_pointerPos.Y + RndFloat(-Constants.PosRndMax, Constants.PosRndMax),
+                        (float)(m_pointerPos.X - m_pointerPrevPos.X) / dt * Constants.PointerVelCoeff + RndFloat(-Constants.VelRndMax, Constants.VelRndMax),
+                        (float)(m_pointerPos.Y - m_pointerPrevPos.Y) / dt * Constants.PointerVelCoeff + RndFloat(-Constants.VelRndMax, Constants.VelRndMax),
+                        RndFloat(Constants.RadiusMin, Constants.RadiusMax),
                         Color.FromArgb(
                             255,
-                            GetClampedRandomByte(0, 255),
-                            GetClampedRandomByte(0, 255),
-                            GetClampedRandomByte(0, 255)
+                            RndByte(0, 255),
+                            RndByte(0, 255),
+                            RndByte(0, 255)
                         ));
 
                     m_controller.AddFirework(firework);
