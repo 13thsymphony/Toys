@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.props" Condition="Exists('..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.props')" />
+  <Import Project="..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.props" Condition="Exists('..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -17,7 +17,9 @@
     <SynthesizeLinkMetadata>true</SynthesizeLinkMetadata>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>Fireworks.Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <NuGetPackageImportStamp>640a1578</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>7f5c928e</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -111,7 +113,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="Fireworks.Windows_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -122,7 +123,8 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Graphics.Canvas">
-      <HintPath>..\..\packages\Win2D.0.0.4-build-140922-1708\lib\win\Microsoft.Graphics.Canvas.winmd</HintPath>
+      <HintPath>..\packages\Win2D.0.0.4-build-140923-0200\lib\win\Microsoft.Graphics.Canvas.winmd</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
@@ -134,10 +136,12 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.props'))" />
-    <Error Condition="!Exists('..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.targets'))" />
+    <Error Condition="!Exists('..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.props'))" />
+    <Error Condition="!Exists('..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  <Import Project="..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.targets" Condition="Exists('..\..\packages\Win2D.0.0.4-build-140922-1708\build\win\Win2D.targets')" />
+  <Import Project="..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.targets" Condition="Exists('..\packages\Win2D.0.0.4-build-140923-0200\build\win\Win2D.targets')" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
