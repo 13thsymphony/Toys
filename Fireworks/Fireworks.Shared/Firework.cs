@@ -7,7 +7,7 @@ using Microsoft.Graphics.Canvas;
 
 namespace Fireworks
 {
-    static class Constants
+    static partial class Constants
     {
         // Age at which the firework will stop being simulated in seconds.
         public const float FireworkMaxAge = 3.0f;
@@ -16,10 +16,11 @@ namespace Fireworks
         // e^(ln[coefficient] * dt) * [current amount]
         public const float FireworkDragCoeff = 0.3f;
         // How much is added to DY each second (applied before drag).
-        public const float FireworkGravityTerm = 20.0f;
+        public const float FireworkGravityTerm = 0.0f;
         // What fraction of each RGB channel should remain each second.
-        public const float FireworkBrightnessCoeff = 0.5f;
+        public const float FireworkBrightnessCoeff = 0.9f;
     }
+
     /// <summary>
     /// Encapsulates a single "sparkle". Manages and updates its internal state.
     /// </summary>
