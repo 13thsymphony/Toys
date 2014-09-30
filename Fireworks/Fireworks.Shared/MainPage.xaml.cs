@@ -119,7 +119,7 @@ namespace Fireworks
 
             // We are abusing the Draw call as our "game loop" = create new fireworks here
             // independent of the timing of input events.
-            if (m_wasPointerPressed == true)
+            //if (m_wasPointerPressed == true) // Disable check so we always are rendering.
             {
                 for (int i = 0; i < Constants.NumPerFrame; i++)
                 {
