@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.Effects;
 using System.Numerics;
+using System.Diagnostics;
 
 // Code-behind shared by Windows and Windows Phone projects.
 // Project-specific code is found in MainPage[foo].xaml.cs.
@@ -30,10 +31,12 @@ namespace BurningText
     public sealed partial class MainPage : Page
     {
         private bool m_AreResourcesLoaded;
+        private Size m_bitmapSize;
 
         private Transform2DEffect m_flameAnimation;
         private CompositeEffect m_composite;
-        private int m_flameOffset;
+        private Transform2DEffect m_flamePosition;
+        private Stopwatch m_stopwatch;
 
         public MainPage()
         {
@@ -42,6 +45,8 @@ namespace BurningText
 #if WINDOWS_PHONE_APP
             this.NavigationCacheMode = NavigationCacheMode.Required;
 #endif
+            m_stopwatch = new Stopwatch();
+            m_stopwatch.Start();
 
             MainCanvas.CreateResources += MainCanvas_CreateResources;
             MainCanvas.Draw += MainCanvas_Draw;
@@ -51,11 +56,31 @@ namespace BurningText
         {
             if (m_AreResourcesLoaded)
             {
+                // TODO: the constant should be adjustable
+                float flameAnimationOffset = m_stopwatch.ElapsedMilliseconds / 1000.0f * 60.0f;
+                m_flameAnimation.TransformMatrix = Matrix3x2.CreateTranslation(0, -flameAnimationOffset);
+
                 using (var ds = args.DrawingSession)
                 {
+                    ds.Clear(Windows.UI.Colors.Black);
                     ds.DrawImage(m_composite);
                 }
             }
+
+            // Render loop.
+            sender.Invalidate();
+        }
+
+        /// <summary>
+        /// Calculates the offset to pass into DrawImage in order to properly center
+        /// the image.
+        /// </summary>
+        /// <param name="imageSize"></param>
+        /// <param name="targetSize"></param>
+        /// <returns></returns>
+        Point GetDrawImageOffset(Size imageSize, Size targetSize)
+        {
+            return new Point(0, 0);
         }
 
         async void MainCanvas_CreateResources(CanvasControl sender, object args)
@@ -63,6 +88,7 @@ namespace BurningText
             m_AreResourcesLoaded = false;
 
             var bitmap = await CanvasBitmap.LoadAsync(sender, "HelloWorldWhite.png");
+            m_bitmapSize = bitmap.Size;
 
             // Dilate the text bitmap.
             var dilate = new MorphologyEffect();
@@ -111,11 +137,14 @@ namespace BurningText
             displacement.Displacement = m_flameAnimation;
             displacement.Amount = 40.0f;
 
-            // TODO: for multiline we need another Transform2D here
+            // Stretch and position the flames.
+            m_flamePosition = new Transform2DEffect();
+            m_flamePosition.Source = displacement;
+            // The transform matrix isn't set until render time as it depends on window size.
 
             // Composite the text over the flames.
             m_composite = new CompositeEffect();
-            m_composite.Inputs.Add(displacement);
+            m_composite.Inputs.Add(m_flamePosition);
             m_composite.Inputs.Add(bitmap);
 
             m_AreResourcesLoaded = true;
