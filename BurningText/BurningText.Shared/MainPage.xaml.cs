@@ -60,27 +60,26 @@ namespace BurningText
                 float flameAnimationOffset = m_stopwatch.ElapsedMilliseconds / 1000.0f * 60.0f;
                 m_flameAnimation.TransformMatrix = Matrix3x2.CreateTranslation(0, -flameAnimationOffset);
 
+                // Scale the flame effect 2x vertically, aligned to the "bottom" of the text (hardcoded offset).
+                m_flamePosition.TransformMatrix = Matrix3x2.CreateScale(
+                    new Vector2(1.0f, 2.0f),
+                    new Vector2((float)sender.RenderSize.Width / 2, 100));
+
                 using (var ds = args.DrawingSession)
                 {
                     ds.Clear(Windows.UI.Colors.Black);
-                    ds.DrawImage(m_composite);
+                    ds.DrawImage(
+                        m_composite,
+                        new Vector2( // Center the bitmap in the window.
+                            (float)(sender.RenderSize.Width / 2 - m_bitmapSize.Width / 2),
+                            (float)(sender.RenderSize.Height / 2 - m_bitmapSize.Height / 2)
+                            )
+                        );
                 }
             }
 
             // Render loop.
             sender.Invalidate();
-        }
-
-        /// <summary>
-        /// Calculates the offset to pass into DrawImage in order to properly center
-        /// the image.
-        /// </summary>
-        /// <param name="imageSize"></param>
-        /// <param name="targetSize"></param>
-        /// <returns></returns>
-        Point GetDrawImageOffset(Size imageSize, Size targetSize)
-        {
-            return new Point(0, 0);
         }
 
         async void MainCanvas_CreateResources(CanvasControl sender, object args)
