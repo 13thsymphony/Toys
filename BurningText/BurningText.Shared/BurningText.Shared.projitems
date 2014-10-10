@@ -6,7 +6,7 @@
     <SharedGUID>ca760826-4eb6-4531-931f-5eab8d917c46</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>FlamingText</Import_RootNamespace>
+    <Import_RootNamespace>BurningText</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">

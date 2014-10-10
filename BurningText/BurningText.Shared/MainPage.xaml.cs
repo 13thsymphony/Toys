@@ -22,7 +22,7 @@ using System.Numerics;
 // Code-behind shared by Windows and Windows Phone projects.
 // Project-specific code is found in MainPage[foo].xaml.cs.
 
-namespace FlamingText
+namespace BurningText
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // Phone specific code. Shared code is defined in MainPage.xaml.cs.
 
-namespace FlamingText
+namespace BurningText
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -34,7 +34,7 @@ namespace FlamingText
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some FlamingTexts,
+            // If you are using the NavigationHelper provided by some BurningTexts,
             // this event is handled for you.
         }
     }

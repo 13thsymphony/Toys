@@ -16,9 +16,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Application FlamingText is documented at http://go.microsoft.com/fwlink/?LinkId=234227
+// The Blank Application BurningText is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
-namespace FlamingText
+namespace BurningText
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

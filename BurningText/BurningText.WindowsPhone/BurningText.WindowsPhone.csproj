@@ -8,8 +8,8 @@
     <ProjectGuid>{059F083C-44FA-4564-B61F-7E9CB2898325}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FlamingText</RootNamespace>
-    <AssemblyName>FlamingText.WindowsPhone</AssemblyName>
+    <RootNamespace>BurningText</RootNamespace>
+    <AssemblyName>BurningText.WindowsPhone</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -112,7 +112,7 @@
   <PropertyGroup Condition=" '$(TargetPlatformIdentifier)' == '' ">
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
   </PropertyGroup>
-  <Import Project="..\FlamingText.Shared\FlamingText.Shared.projitems" Label="Shared" />
+  <Import Project="..\BurningText.Shared\BurningText.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // Windows specific code. Shared code is defined in MainPage.xaml.cs.
 
-namespace FlamingText
+namespace BurningText
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

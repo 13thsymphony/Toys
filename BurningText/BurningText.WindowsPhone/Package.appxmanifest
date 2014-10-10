@@ -8,7 +8,7 @@
   <mp:PhoneIdentity PhoneProductId="aaa968ef-bcde-4752-85d0-8ed474cec7a2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>FlamingText.WindowsPhone</DisplayName>
+    <DisplayName>BurningText.WindowsPhone</DisplayName>
     <PublisherDisplayName>sitao</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -25,12 +25,12 @@
   <Applications>
     <Application Id="App"
         Executable="$targetnametoken$.exe"
-        EntryPoint="FlamingText.WindowsPhone.App">
+        EntryPoint="BurningText.WindowsPhone.App">
         <m3:VisualElements
-            DisplayName="FlamingText.WindowsPhone"
+            DisplayName="BurningText.WindowsPhone"
             Square150x150Logo="Assets\Logo.png"
             Square44x44Logo="Assets\SmallLogo.png"
-            Description="FlamingText.WindowsPhone"
+            Description="BurningText.WindowsPhone"
             ForegroundText="light"
             BackgroundColor="transparent">
             <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>
