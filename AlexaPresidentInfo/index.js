@@ -21,60 +21,88 @@
 
 'use strict';
 
-var AlexaSkill = require('./AlexaSkill');
+var AlexaSkill = require('./AlexaSkill'),
+    PresidentData = require('./constants.js');
 
 var APP_ID = "amzn1.echo-sdk-ams.app.5a6a551a-550e-4a27-806e-f67e90b1c243"; //replace with 'amzn1.echo-sdk-ams.app.[your-unique-value-here]';
 
 /**
- * UnitConverter is a child of AlexaSkill.
+ * PresidentInfo is a child of AlexaSkill.
  * To read more about inheritance in JavaScript, see the link below.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
-var UnitConverter = function () {
+var PresidentInfo = function () {
     AlexaSkill.call(this, APP_ID);
 };
 
 // Extend AlexaSkill
-UnitConverter.prototype = Object.create(AlexaSkill.prototype);
-UnitConverter.prototype.constructor = UnitConverter;
+PresidentInfo.prototype = Object.create(AlexaSkill.prototype);
+PresidentInfo.prototype.constructor = PresidentInfo;
 
-UnitConverter.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    var speechText = "Welcome to the Unit Converter. You can ask me to convert between various measurements, like temperature or length.";
+PresidentInfo.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
+    var speechText = "I'll tell you key information about the Presidents of the United States.";
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
     var repromptText = "For instructions on what you can say, please say help me.";
     response.ask(speechText, repromptText);
 };
 
-UnitConverter.prototype.intentHandlers = {
-    "ConvertTemp": function (intent, session, response) {
-        var tempValueSlot = intent.slots.TempValue;
-        var tempUnitInSlot = intent.slots.TempUnitIn;
-        var tempUnitOutSlot = intent.slots.TempUnitOut;
-       
-        var cardTitle = "Conversion for " + tempValueSlot.value + " degrees " + tempUnitInSlot.value,
-            convertedValue = "five degrees " + tempUnitOutSlot.value, // TODO: dummy value
-            speechOutput,
-            repromptOutput;
-        if (convertedValue) {
-            speechOutput = {
-                speech: convertedValue,
-                type: AlexaSkill.speechOutputType.PLAIN_TEXT
-            };
-            response.tellWithCard(speechOutput, cardTitle, convertedValue);
-        } else {
+PresidentInfo.prototype.intentHandlers = {
+    "PresidentInfoIntent": function (intent, session, response) {
+        var ordinalSlot = intent.slots.OrdinalValue;
+        var numeralSlot = intent.slots.NumeralValue;
+        var nameSlot = intent.slots.NameValue;
+        var president;
+        
+        // Note that the user's ordinal query is one-indexed.
+        if (numeralSlot && numeralSlot.value >= 1 && numeralSlot.value < PresidentData.length + 1)
+        {
+            president = PresidentData[numeralSlot.value - 1];
+        }
+        else if (ordinalSlot && ordinalSlot.value)
+        {
+            for (var i = 0; i < PresidentData.length; i++) {
+                if (PresidentData[i].Ordinal == ordinalSlot.value) {
+                    president = PresidentData[i];
+                }
+            }
+        }
+        else if (nameSlot && nameSlot.value)
+        {
+            nameSlot.value = nameSlot.value.toLowerCase();
+            
+            for (var i = 0; i < PresidentData.length; i++) {
+                if (PresidentData[i].MatchName == nameSlot.value) {
+                    president = PresidentData[i];
+                }
+            }
+        }
+        
+        if (!president) {
             var speech = "Does not compute. Oops. What else can I help with?";
             speechOutput = {
                 speech: speech,
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
-            repromptOutput = {
+            var repromptOutput = {
                 speech: "What else can I help with?",
                 type: AlexaSkill.speechOutputType.PLAIN_TEXT
             };
             response.ask(speechOutput, repromptOutput);
+            
+            return;
         }
+       
+        var cardTitle = "President # " + president.Number + ", " + president.Name;
+        var output = "President number " + president.Number + ", " + president.Name + ", was inaugurated on " +
+                president.DateInaugurated + " and was a member of the " + president.Party + " party.";
+            
+        var speechOutput = {
+            speech: output,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+        response.tellWithCard(speechOutput, cardTitle, output);
     },
 
     "AMAZON.StopIntent": function (intent, session, response) {
@@ -88,8 +116,8 @@ UnitConverter.prototype.intentHandlers = {
     },
 
     "AMAZON.HelpIntent": function (intent, session, response) {
-        var speechText = "I'm not very smart yet. Now, what can I help you with?";
-        var repromptText = "You can ask for temperature conversion. Now, what can I help you with?";
+        var speechText = "Ask for a United States President by their name or number. Now, what can I help you with?";
+        var repromptText = speechText;
         var speechOutput = {
             speech: speechText,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT
@@ -103,6 +131,6 @@ UnitConverter.prototype.intentHandlers = {
 };
 
 exports.handler = function (event, context) {
-    var unitConverter = new UnitConverter();
-    unitConverter.execute(event, context);
+    var presidentInfo = new PresidentInfo();
+    presidentInfo.execute(event, context);
 };
