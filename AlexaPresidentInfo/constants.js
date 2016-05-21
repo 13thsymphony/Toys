@@ -12,7 +12,8 @@ module.exports =
 [
   {
     "Number": 1,
-    "Ordinal": "First",
+    "Ordinal": "first",
+    "Ordinal2": "1st",
     "Name": "George Washington",
     "DateInaugurated": "April 30, 1789",
     "Party": "Non partisan",
@@ -21,7 +22,8 @@ module.exports =
   },
   {
     "Number": 2,
-    "Ordinal": "Second",
+    "Ordinal": "second",
+    "Ordinal2": "2nd",
     "Name": "John Adams",
     "DateInaugurated": "March 4, 1797",
     "Party": "Federalist",
@@ -30,7 +32,8 @@ module.exports =
   },
   {
     "Number": 3,
-    "Ordinal": "Third",
+    "Ordinal": "third",
+    "Ordinal2": "3rd",
     "Name": "Thomas Jefferson",
     "DateInaugurated": "March 4, 1801",
     "Party": "Democratic Republican",
@@ -39,16 +42,18 @@ module.exports =
   },
   {
     "Number": 4,
-    "Ordinal": "Fourth",
+    "Ordinal": "fourth",
+    "Ordinal2": "4th",
     "Name": "James Madison",
     "DateInaugurated": "March 4, 1809",
     "Party": "Democratic Republican",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "james madison"
   },
   {
     "Number": 5,
-    "Ordinal": "Fifth",
+    "Ordinal": "fifth",
+    "Ordinal2": "5th",
     "Name": "James Monroe",
     "DateInaugurated": "March 4, 1817",
     "Party": "Democratic Republican",
@@ -57,7 +62,8 @@ module.exports =
   },
   {
     "Number": 6,
-    "Ordinal": "Sixth",
+    "Ordinal": "sixth",
+    "Ordinal2": "6th",
     "Name": "John Quincy Adams",
     "DateInaugurated": "March 4, 1825",
     "Party": "Democratic Republican",
@@ -66,16 +72,18 @@ module.exports =
   },
   {
     "Number": 7,
-    "Ordinal": "Seventh",
+    "Ordinal": "seventh",
+    "Ordinal2": "7th",
     "Name": "Andrew Jackson",
     "DateInaugurated": "March 4, 1829",
     "Party": "Democratic",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "andrew jackson"
   },
   {
     "Number": 8,
-    "Ordinal": "Eighth",
+    "Ordinal": "eighth",
+    "Ordinal2": "8th",
     "Name": "Martin Van Buren",
     "DateInaugurated": "March 4, 1837",
     "Party": "Democratic",
@@ -84,7 +92,8 @@ module.exports =
   },
   {
     "Number": 9,
-    "Ordinal": "Ninth",
+    "Ordinal": "ninth",
+    "Ordinal2": "9th",
     "Name": "William Henry Harrison",
     "DateInaugurated": "March 4, 1841",
     "Party": "Whig",
@@ -93,16 +102,18 @@ module.exports =
   },
   {
     "Number": 10,
-    "Ordinal": "Tenth",
+    "Ordinal": "tenth",
+    "Ordinal2": "10th",
     "Name": "John Tyler",
     "DateInaugurated": "April 4, 1841",
     "Party": "Whig",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "john tyler"
   },
   {
     "Number": 11,
-    "Ordinal": "Eleventh",
+    "Ordinal": "eleventh",
+    "Ordinal2": "11th",
     "Name": "James K. Polk",
     "DateInaugurated": "March 4, 1845",
     "Party": "Democratic",
@@ -111,7 +122,8 @@ module.exports =
   },
   {
     "Number": 12,
-    "Ordinal": "Twelfth",
+    "Ordinal": "twelfth",
+    "Ordinal2": "12th",
     "Name": "Zachary Taylor",
     "DateInaugurated": "March 4, 1849",
     "Party": "Whig",
@@ -120,16 +132,18 @@ module.exports =
   },
   {
     "Number": 13,
-    "Ordinal": "Thirteenth",
+    "Ordinal": "thirteenth",
+    "Ordinal2": "13th",
     "Name": "Millard Fillmore",
     "DateInaugurated": "July 9, 1850",
     "Party": "Whig",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "millard fillmore"
   },
   {
     "Number": 14,
-    "Ordinal": "Fourteenth",
+    "Ordinal": "fourteenth",
+    "Ordinal2": "14th",
     "Name": "Franklin Pierce",
     "DateInaugurated": "March 4, 1853",
     "Party": "Democratic",
@@ -138,7 +152,8 @@ module.exports =
   },
   {
     "Number": 15,
-    "Ordinal": "Fifteenth",
+    "Ordinal": "fifteenth",
+    "Ordinal2": "15th",
     "Name": "James Buchanan",
     "DateInaugurated": "March 4, 1857",
     "Party": "Democratic",
@@ -147,7 +162,8 @@ module.exports =
   },
   {
     "Number": 16,
-    "Ordinal": "Sixteenth",
+    "Ordinal": "sixteenth",
+    "Ordinal2": "16th",
     "Name": "Abraham Lincoln",
     "DateInaugurated": "March 4, 1861",
     "Party": "Republican",
@@ -156,16 +172,18 @@ module.exports =
   },
   {
     "Number": 17,
-    "Ordinal": "Seventeenth",
+    "Ordinal": "seventeenth",
+    "Ordinal2": "17th",
     "Name": "Andrew Johnson",
     "DateInaugurated": "April 15, 1865",
     "Party": "Democratic",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "andrew johnson"
   },
   {
     "Number": 18,
-    "Ordinal": "Eighteenth",
+    "Ordinal": "eighteenth",
+    "Ordinal2": "18th",
     "Name": "Ulysses S. Grant",
     "DateInaugurated": "March 4, 1869",
     "Party": "Republican",
@@ -174,7 +192,8 @@ module.exports =
   },
   {
     "Number": 19,
-    "Ordinal": "Nineteenth",
+    "Ordinal": "nineteenth",
+    "Ordinal2": "19th",
     "Name": "Rutherford B. Hayes",
     "DateInaugurated": "March 4, 1877",
     "Party": "Republican",
@@ -183,7 +202,8 @@ module.exports =
   },
   {
     "Number": 20,
-    "Ordinal": "Twentieth",
+    "Ordinal": "twentieth",
+    "Ordinal2": "20th",
     "Name": "James A. Garfield",
     "DateInaugurated": "March 4, 1881",
     "Party": "Republican",
@@ -192,16 +212,18 @@ module.exports =
   },
   {
     "Number": 21,
-    "Ordinal": "Twenty-first",
+    "Ordinal": "twenty first",
+    "Ordinal2": "21st",
     "Name": "Chester A. Arthur",
     "DateInaugurated": "September 19, 1881",
     "Party": "Republican",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "chester a arthur"
   },
   {
     "Number": 22,
-    "Ordinal": "Twenty-second",
+    "Ordinal": "twenty second",
+    "Ordinal2": "22nd",
     "Name": "Grover Cleveland",
     "DateInaugurated": "March 4, 1885",
     "Party": "Democratic",
@@ -210,7 +232,8 @@ module.exports =
   },
   {
     "Number": 23,
-    "Ordinal": "Twenty-third",
+    "Ordinal": "twenty third",
+    "Ordinal2": "23rd",
     "Name": "Benjamin Harrison",
     "DateInaugurated": "March 4, 1889",
     "Party": "Republican",
@@ -219,7 +242,8 @@ module.exports =
   },
   {
     "Number": 24,
-    "Ordinal": "Twenty-fourth",
+    "Ordinal": "twenty fourth",
+    "Ordinal2": "24th",
     "Name": "Grover Cleveland",
     "DateInaugurated": "March 4, 1893",
     "Party": "Democratic",
@@ -228,7 +252,8 @@ module.exports =
   },
   {
     "Number": 25,
-    "Ordinal": "Twenty-fifth",
+    "Ordinal": "twenty fifth",
+    "Ordinal2": "25th",
     "Name": "William McKinley",
     "DateInaugurated": "March 4, 1897",
     "Party": "Republican",
@@ -237,16 +262,18 @@ module.exports =
   },
   {
     "Number": 26,
-    "Ordinal": "twenty-sixth",
+    "Ordinal": "twenty sixth",
+    "Ordinal2": "26th",
     "Name": "Theodore Roosevelt",
     "DateInaugurated": "14-Sep-01",
     "Party": "Republican",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "theodore roosevelt"
   },
   {
     "Number": 27,
-    "Ordinal": "twenty-seventh",
+    "Ordinal": "twenty seventh",
+    "Ordinal2": "27th",
     "Name": "William Howard Taft",
     "DateInaugurated": "4-Mar-09",
     "Party": "Republican",
@@ -255,7 +282,8 @@ module.exports =
   },
   {
     "Number": 28,
-    "Ordinal": "twenty-eighth",
+    "Ordinal": "twenty eighth",
+    "Ordinal2": "28th",
     "Name": "Woodrow Wilson",
     "DateInaugurated": "4-Mar-13",
     "Party": "Democratic",
@@ -264,7 +292,8 @@ module.exports =
   },
   {
     "Number": 29,
-    "Ordinal": "twenty-ninth",
+    "Ordinal": "twenty ninth",
+    "Ordinal2": "29th",
     "Name": "Warren G. Harding",
     "DateInaugurated": "4-Mar-21",
     "Party": "Republican",
@@ -274,15 +303,17 @@ module.exports =
   {
     "Number": 30,
     "Ordinal": "thirtieth",
+    "Ordinal2": "30th",
     "Name": "Calvin Coolidge",
     "DateInaugurated": "2-Aug-23",
     "Party": "Republican",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "calvin coolidge"
   },
   {
     "Number": 31,
-    "Ordinal": "thirty-first",
+    "Ordinal": "thirty first",
+    "Ordinal2": "31st",
     "Name": "Herbert Hoover",
     "DateInaugurated": "4-Mar-29",
     "Party": "Republican",
@@ -291,7 +322,8 @@ module.exports =
   },
   {
     "Number": 32,
-    "Ordinal": "thirty-second",
+    "Ordinal": "thirty second",
+    "Ordinal2": "32nd",
     "Name": "Franklin D. Roosevelt",
     "DateInaugurated": "March 4 1933",
     "Party": "Democratic",
@@ -300,16 +332,18 @@ module.exports =
   },
   {
     "Number": 33,
-    "Ordinal": "thirty-third",
+    "Ordinal": "thirty third",
+    "Ordinal2": "33rd",
     "Name": "Harry S. Truman",
     "DateInaugurated": "12-Apr-45",
     "Party": "Democratic",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "harry s truman"
   },
   {
     "Number": 34,
-    "Ordinal": "thirty-fourth",
+    "Ordinal": "thirty fourth",
+    "Ordinal2": "34th",
     "Name": "Dwight D. Eisenhower",
     "DateInaugurated": "20-Jan-53",
     "Party": "Republican",
@@ -318,7 +352,8 @@ module.exports =
   },
   {
     "Number": 35,
-    "Ordinal": "thirty-fifth",
+    "Ordinal": "thirty fifth",
+    "Ordinal2": "35th",
     "Name": "John F. Kennedy",
     "DateInaugurated": "20-Jan-61",
     "Party": "Democratic",
@@ -327,16 +362,18 @@ module.exports =
   },
   {
     "Number": 36,
-    "Ordinal": "thirty-sixth",
+    "Ordinal": "thirty sixth",
+    "Ordinal2": "36th",
     "Name": "Lyndon B. Johnson",
     "DateInaugurated": "22-Nov-63",
     "Party": "Democratic",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "lyndon b johnson"
   },
   {
     "Number": 37,
-    "Ordinal": "thirty-seventh",
+    "Ordinal": "thirty seventh",
+    "Ordinal2": "37th",
     "Name": "Richard Nixon",
     "DateInaugurated": "20-Jan-69",
     "Party": "Republican",
@@ -345,16 +382,18 @@ module.exports =
   },
   {
     "Number": 38,
-    "Ordinal": "thirty-eighth",
+    "Ordinal": "thirty eighth",
+    "Ordinal2": "38th",
     "Name": "Gerald Ford",
     "DateInaugurated": "9-Aug-74",
     "Party": "Republican",
-    "VicePresident": "",
+    "VicePresident": 0,
     "MatchName": "gerald ford"
   },
   {
     "Number": 39,
-    "Ordinal": "thirty-ninth",
+    "Ordinal": "thirty ninth",
+    "Ordinal2": "39th",
     "Name": "Jimmy Carter",
     "DateInaugurated": "20-Jan-77",
     "Party": "Democratic",
@@ -364,6 +403,7 @@ module.exports =
   {
     "Number": 40,
     "Ordinal": "fortieth",
+    "Ordinal2": "40th",
     "Name": "Ronald Reagan",
     "DateInaugurated": "20-Jan-81",
     "Party": "Republican",
@@ -372,7 +412,8 @@ module.exports =
   },
   {
     "Number": 41,
-    "Ordinal": "forty-first",
+    "Ordinal": "forty first",
+    "Ordinal2": "41st",
     "Name": "George H. W. Bush",
     "DateInaugurated": "20-Jan-89",
     "Party": "Republican",
@@ -381,7 +422,8 @@ module.exports =
   },
   {
     "Number": 42,
-    "Ordinal": "forty-second",
+    "Ordinal": "forty second",
+    "Ordinal2": "42nd",
     "Name": "Bill Clinton",
     "DateInaugurated": "20-Jan-93",
     "Party": "Democratic",
@@ -390,7 +432,8 @@ module.exports =
   },
   {
     "Number": 43,
-    "Ordinal": "forty-third",
+    "Ordinal": "forty third",
+    "Ordinal2": "43rd",
     "Name": "George W. Bush",
     "DateInaugurated": "20-Jan-01",
     "Party": "Republican",
@@ -399,14 +442,12 @@ module.exports =
   },
   {
     "Number": 44,
-    "Ordinal": "forty-fourth",
+    "Ordinal": "forty fourth",
+    "Ordinal2": "44th",
     "Name": "Barack Obama",
     "DateInaugurated": "20-Jan-09",
     "Party": "Democratic",
     "VicePresident": "Joe Biden",
     "MatchName": "barack obama"
-  },
-  {
-    "Number": ""
   }
 ];

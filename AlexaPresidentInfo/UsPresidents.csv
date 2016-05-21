@@ -1,45 +1,45 @@
-Number,Ordinal,Name,DateInaugurated,Party,VicePresident,MatchName
-1,First,George Washington,"April 30, 1789",Non partisan,John Adams,george washington
-2,Second,John Adams,"March 4, 1797",Federalist,Thomas Jefferson,john adams
-3,Third,Thomas Jefferson,"March 4, 1801",Democratic Republican,Aaron Burr,thomas jefferson
-4,Fourth,James Madison,"March 4, 1809",Democratic Republican,,james madison
-5,Fifth,James Monroe,"March 4, 1817",Democratic Republican,Daniel D. Tompkins,james monroe
-6,Sixth,John Quincy Adams,"March 4, 1825",Democratic Republican,John C. Calhoun,john quincy adams
-7,Seventh,Andrew Jackson,"March 4, 1829",Democratic,,andrew jackson
-8,Eighth,Martin Van Buren,"March 4, 1837",Democratic,Richard Mentor Johnson,martin van buren
-9,Ninth,William Henry Harrison,"March 4, 1841",Whig,John Tyler,william henry harrison
-10,Tenth,John Tyler,"April 4, 1841",Whig,,john tyler
-11,Eleventh,James K. Polk,"March 4, 1845",Democratic,George M. Dallas,james k polk
-12,Twelfth,Zachary Taylor,"March 4, 1849",Whig,Millard Fillmore,zachary taylor
-13,Thirteenth,Millard Fillmore,"July 9, 1850",Whig,,millard fillmore
-14,Fourteenth,Franklin Pierce,"March 4, 1853",Democratic,William R. King,franklin pierce
-15,Fifteenth,James Buchanan,"March 4, 1857",Democratic,John C. Breckinridge,james buchanan
-16,Sixteenth,Abraham Lincoln,"March 4, 1861",Republican,Hannibal Hamlin,abraham lincoln
-17,Seventeenth,Andrew Johnson,"April 15, 1865",Democratic,,andrew johnson
-18,Eighteenth,Ulysses S. Grant,"March 4, 1869",Republican,Schuyler Colfax,ulysses s grant
-19,Nineteenth,Rutherford B. Hayes,"March 4, 1877",Republican,William A. Wheeler,rutherford b hayes
-20,Twentieth,James A. Garfield,"March 4, 1881",Republican,Chester A. Arthur,james a garfield
-21,Twenty-first,Chester A. Arthur,"September 19, 1881",Republican,,chester a arthur
-22,Twenty-second,Grover Cleveland,"March 4, 1885",Democratic,Thomas A. Hendricks,grover cleveland
-23,Twenty-third,Benjamin Harrison,"March 4, 1889",Republican,Levi P. Morton,benjamin harrison
-24,Twenty-fourth,Grover Cleveland,"March 4, 1893",Democratic,Adlai Stevenson,grover cleveland
-25,Twenty-fifth,William McKinley,"March 4, 1897",Republican,Garret Hobart,william mckinley
-26,twenty-sixth,Theodore Roosevelt,14-Sep-01,Republican,,theodore roosevelt
-27,twenty-seventh,William Howard Taft,4-Mar-09,Republican,James S. Sherman,william howard taft
-28,twenty-eighth,Woodrow Wilson,4-Mar-13,Democratic,Thomas R. Marshall,woodrow wilson
-29,twenty-ninth,Warren G. Harding,4-Mar-21,Republican,Calvin Coolidge,warren g harding
-30,thirtieth,Calvin Coolidge,2-Aug-23,Republican,,calvin coolidge
-31,thirty-first,Herbert Hoover,4-Mar-29,Republican,Charles Curtis,herbert hoover
-32,thirty-second,Franklin D. Roosevelt,March 4 1933,Democratic,John Nance Garner,franklin d roosevelt
-33,thirty-third,Harry S. Truman,12-Apr-45,Democratic,,harry s truman
-34,thirty-fourth,Dwight D. Eisenhower,20-Jan-53,Republican,Richard Nixon,dwight d eisenhower
-35,thirty-fifth,John F. Kennedy,20-Jan-61,Democratic,Lyndon B. Johnson,john f kennedy
-36,thirty-sixth,Lyndon B. Johnson,22-Nov-63,Democratic,,lyndon b johnson
-37,thirty-seventh,Richard Nixon,20-Jan-69,Republican,Spiro Agnew,richard nixon
-38,thirty-eighth,Gerald Ford,9-Aug-74,Republican,,gerald ford
-39,thirty-ninth,Jimmy Carter,20-Jan-77,Democratic,Walter Mondale,jimmy carter
-40,fortieth,Ronald Reagan,20-Jan-81,Republican,George H. W. Bush,ronald reagan
-41,forty-first,George H. W. Bush,20-Jan-89,Republican,Dan Quayle,george h w bush
-42,forty-second,Bill Clinton,20-Jan-93,Democratic,Al Gore,bill clinton
-43,forty-third,George W. Bush,20-Jan-01,Republican,Dick Cheney,george w bush
-44,forty-fourth,Barack Obama,20-Jan-09,Democratic,Joe Biden,barack obama
+Number,Ordinal,Ordinal2,Name,DateInaugurated,Party,VicePresident,MatchName
+1,first,1st,George Washington,"April 30, 1789",Non partisan,John Adams,george washington
+2,second,2nd,John Adams,"March 4, 1797",Federalist,Thomas Jefferson,john adams
+3,third,3rd,Thomas Jefferson,"March 4, 1801",Democratic Republican,Aaron Burr,thomas jefferson
+4,fourth,4th,James Madison,"March 4, 1809",Democratic Republican,,james madison
+5,fifth,5th,James Monroe,"March 4, 1817",Democratic Republican,Daniel D. Tompkins,james monroe
+6,sixth,6th,John Quincy Adams,"March 4, 1825",Democratic Republican,John C. Calhoun,john quincy adams
+7,seventh,7th,Andrew Jackson,"March 4, 1829",Democratic,,andrew jackson
+8,eighth,8th,Martin Van Buren,"March 4, 1837",Democratic,Richard Mentor Johnson,martin van buren
+9,ninth,9th,William Henry Harrison,"March 4, 1841",Whig,John Tyler,william henry harrison
+10,tenth,10th,John Tyler,"April 4, 1841",Whig,,john tyler
+11,eleventh,11th,James K. Polk,"March 4, 1845",Democratic,George M. Dallas,james k polk
+12,twelfth,12th,Zachary Taylor,"March 4, 1849",Whig,Millard Fillmore,zachary taylor
+13,thirteenth,13th,Millard Fillmore,"July 9, 1850",Whig,,millard fillmore
+14,fourteenth,14th,Franklin Pierce,"March 4, 1853",Democratic,William R. King,franklin pierce
+15,fifteenth,15th,James Buchanan,"March 4, 1857",Democratic,John C. Breckinridge,james buchanan
+16,sixteenth,16th,Abraham Lincoln,"March 4, 1861",Republican,Hannibal Hamlin,abraham lincoln
+17,seventeenth,17th,Andrew Johnson,"April 15, 1865",Democratic,,andrew johnson
+18,eighteenth,18th,Ulysses S. Grant,"March 4, 1869",Republican,Schuyler Colfax,ulysses s grant
+19,nineteenth,19th,Rutherford B. Hayes,"March 4, 1877",Republican,William A. Wheeler,rutherford b hayes
+20,twentieth,20th,James A. Garfield,"March 4, 1881",Republican,Chester A. Arthur,james a garfield
+21,twenty first,21st,Chester A. Arthur,"September 19, 1881",Republican,,chester a arthur
+22,twenty second,22nd,Grover Cleveland,"March 4, 1885",Democratic,Thomas A. Hendricks,grover cleveland
+23,twenty third,23rd,Benjamin Harrison,"March 4, 1889",Republican,Levi P. Morton,benjamin harrison
+24,twenty fourth,24th,Grover Cleveland,"March 4, 1893",Democratic,Adlai Stevenson,grover cleveland
+25,twenty fifth,25th,William McKinley,"March 4, 1897",Republican,Garret Hobart,william mckinley
+26,twenty sixth,26th,Theodore Roosevelt,14-Sep-01,Republican,,theodore roosevelt
+27,twenty seventh,27th,William Howard Taft,4-Mar-09,Republican,James S. Sherman,william howard taft
+28,twenty eighth,28th,Woodrow Wilson,4-Mar-13,Democratic,Thomas R. Marshall,woodrow wilson
+29,twenty ninth,29th,Warren G. Harding,4-Mar-21,Republican,Calvin Coolidge,warren g harding
+30,thirtieth,30th,Calvin Coolidge,2-Aug-23,Republican,,calvin coolidge
+31,thirty first,31st,Herbert Hoover,4-Mar-29,Republican,Charles Curtis,herbert hoover
+32,thirty second,32nd,Franklin D. Roosevelt,March 4 1933,Democratic,John Nance Garner,franklin d roosevelt
+33,thirty third,33rd,Harry S. Truman,12-Apr-45,Democratic,,harry s truman
+34,thirty fourth,34th,Dwight D. Eisenhower,20-Jan-53,Republican,Richard Nixon,dwight d eisenhower
+35,thirty fifth,35th,John F. Kennedy,20-Jan-61,Democratic,Lyndon B. Johnson,john f kennedy
+36,thirty sixth,36th,Lyndon B. Johnson,22-Nov-63,Democratic,,lyndon b johnson
+37,thirty seventh,37th,Richard Nixon,20-Jan-69,Republican,Spiro Agnew,richard nixon
+38,thirty eighth,38th,Gerald Ford,9-Aug-74,Republican,,gerald ford
+39,thirty ninth,39th,Jimmy Carter,20-Jan-77,Democratic,Walter Mondale,jimmy carter
+40,fortieth,40th,Ronald Reagan,20-Jan-81,Republican,George H. W. Bush,ronald reagan
+41,forty first,41st,George H. W. Bush,20-Jan-89,Republican,Dan Quayle,george h w bush
+42,forty second,42nd,Bill Clinton,20-Jan-93,Democratic,Al Gore,bill clinton
+43,forty third,43rd,George W. Bush,20-Jan-01,Republican,Dick Cheney,george w bush
+44,forty fourth,44th,Barack Obama,20-Jan-09,Democratic,Joe Biden,barack obama
