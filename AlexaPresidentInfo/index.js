@@ -62,7 +62,9 @@ PresidentInfo.prototype.intentHandlers = {
         }
         else if (ordinalSlot && ordinalSlot.value)
         {
+            console.log("Ordinal: " + ordinalSlot.value);
             for (var i = 0; i < PresidentData.length; i++) {
+                console.log("Searching " + i + ": " + PresidentData[i].Ordinal);
                 if (PresidentData[i].Ordinal == ordinalSlot.value) {
                     president = PresidentData[i];
                 }
